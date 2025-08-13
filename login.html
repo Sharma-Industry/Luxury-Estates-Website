@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Estates | Exclusive Properties</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      background: rgba(20, 20, 20, 0.8);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .welcome-section {
+      flex: 1;
+      padding: 60px 40px;
+      background: linear-gradient(135deg, rgba(173, 138, 95, 0.9) 0%, rgba(115, 87, 52, 0.9) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      color: #d4af37;
+    }
+
+    .welcome-section h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      font-weight: 300;
+    }
+
+    .welcome-section h1 span {
+      font-weight: 700;
+      color: #d4af37;
+      display: block;
+    }
+
+    .welcome-section p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    .features {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+
+    .feature i {
+      color: #d4af37;
+      font-size: 1.2rem;
+    }
+
+    .auth-section {
+      width: 400px;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .auth-container {
+      width: 100%;
+    }
+
+    .tabs {
+      display: flex;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #444;
+    }
+
+    .tab {
+      padding: 12px 25px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border-bottom: 3px solid transparent;
+    }
+
+    .tab.active {
+      color: #d4af37;
+      border-bottom: 3px solid #d4af37;
+    }
+
+    .form-container {
+      display: none;
+    }
+
+    .form-container.active {
+      display: block;
+    }
+
+    .form-title {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+
+    .input-group {
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #ccc;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 15px 20px;
+      border: 1px solid #444;
+      background: #222;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus {
+      border-color: #d4af37;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+    }
+
+    .input-group i {
+      position: absolute;
+      right: 20px;
+      top: 45px;
+      color: #888;
+    }
+
+    .remember {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+    }
+
+    .remember label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .remember a {
+      color: #d4af37;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .remember a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      background: #d4af37;
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn:hover {
+      background: #c19d30;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .divider {
+      text-align: center;
+      margin: 30px 0;
+      position: relative;
+      color: #888;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 42%;
+      height: 1px;
+      background: #444;
+    }
+
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    .social-login {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .social-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #444;
+      background: transparent;
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
+    .signup-link a {
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .auth-section {
+        width: 100%;
+      }
+
+      .welcome-section {
+        padding: 40px 30px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .auth-section {
+        padding: 40px 25px;
+      }
+
+      .tabs {
+        justify-content: center;
+      }
+
+      .social-login {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="welcome-section">
+      <div class="logo">
+        <i class="fas fa-crown"></i>
+        LUXURY ESTATES
+      </div>
+      <h1>Discover <span>Extraordinary Living</span></h1>
+      <p>Access our exclusive portfolio of the world's finest properties. Experience unparalleled luxury and
+        sophistication in every detail.</p>
+
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-check-circle"></i>
+          <span>Global luxury properties</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-check-circle"></i>
+          <span>24/7 concierge service</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-check-circle"></i>
+          <span>Private viewings</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-check-circle"></i>
+          <span>Exclusive market insights</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-section">
+      <div class="auth-container">
+        <div class="tabs">
+          <div class="tab active" data-tab="login">Login</div>
+          <div class="tab" data-tab="signup">Sign Up</div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="form-container active" id="login-form">
+          <h2 class="form-title">Welcome Back</h2>
+          <form>
+            <div class="input-group">
+              <label for="login-email">Email Address</label>
+              <input type="email" id="login-email" placeholder="Enter your email" required>
+              <i class="fas fa-envelope"></i>
+            </div>
+
+            <div class="input-group">
+              <label for="login-password">Password</label>
+              <input type="password" id="login-password" placeholder="Enter your password" required>
+              <i class="fas fa-lock"></i>
+            </div>
+
+            <div class="remember">
+              <label>
+                <input type="checkbox"> Remember me
+              </label>
+              <a href="#" id="forgot-password-link">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn">Sign In</button>
+          </form>
+
+          <div class="divider">or continue with</div>
+
+          <div class="social-login">
+            <button class="social-btn">
+              <i class="fab fa-google"></i> Google
+            </button>
+            <button class="social-btn">
+              <i class="fab fa-apple"></i> Apple
+            </button>
+          </div>
+
+          <div class="signup-link">
+            Don't have an account? <a href="#" id="signup-link">Sign up</a>
+          </div>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="form-container" id="signup-form">
+          <h2 class="form-title">Create Account</h2>
+          <form>
+            <div class="input-group">
+              <label for="signup-name">Full Name</label>
+              <input type="text" id="signup-name" placeholder="Enter your full name" required>
+              <i class="fas fa-user"></i>
+            </div>
+
+            <div class="input-group">
+              <label for="signup-email">Email Address</label>
+              <input type="email" id="signup-email" placeholder="Enter your email" required>
+              <i class="fas fa-envelope"></i>
+            </div>
+
+            <div class="input-group">
+              <label for="signup-password">Password</label>
+              <input type="password" id="signup-password" placeholder="Create a password" required>
+              <i class="fas fa-lock"></i>
+            </div>
+
+            <div class="input-group">
+              <label for="signup-confirm">Confirm Password</label>
+              <input type="password" id="signup-confirm" placeholder="Confirm your password" required>
+              <i class="fas fa-lock"></i>
+            </div>
+
+            <div class="remember">
+              <label>
+                <input type="checkbox" required> I agree to the Terms & Conditions
+              </label>
+            </div>
+
+            <button type="submit" class="btn">Create Account</button>
+          </form>
+
+          <div class="divider">or sign up with</div>
+
+          <div class="social-login">
+            <button class="social-btn">
+              <i class="fab fa-google"></i> Google
+            </button>
+            <button class="social-btn">
+              <i class="fab fa-apple"></i> Apple
+            </button>
+          </div>
+
+          <div class="signup-link">
+            Already have an account? <a href="#" id="login-link">Sign in</a>
+          </div>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div class="form-container" id="forgot-password-form">
+          <h2 class="form-title">Reset Password</h2>
+          <p style="margin-bottom: 25px; color: #ccc;">Enter your email address and we'll send you a link to reset your
+            password.</p>
+          <form>
+            <div class="input-group">
+              <label for="reset-email">Email Address</label>
+              <input type="email" id="reset-email" placeholder="Enter your email" required>
+              <i class="fas fa-envelope"></i>
+            </div>
+
+            <button type="submit" class="btn">Send Reset Link</button>
+          </form>
+
+          <div class="signup-link" style="margin-top: 30px;">
+            <a href="#" id="back-to-login"><i class="fas fa-arrow-left"></i> Back to login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tab switching functionality
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs and forms
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
+
+        // Add active class to clicked tab
+        tab.classList.add('active');
+
+        // Show corresponding form
+        const tabName = tab.getAttribute('data-tab');
+        document.getElementById(`${tabName}-form`).classList.add('active');
+      });
+    });
+
+    // Forgot password link
+    document.getElementById('forgot-password-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
+      document.getElementById('forgot-password-form').classList.add('active');
+    });
+
+    // Back to login from forgot password
+    document.getElementById('back-to-login').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
+      document.getElementById('login-form').classList.add('active');
+
+      // Activate login tab
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('.tab[data-tab="login"]').classList.add('active');
+    });
+
+    // Switch to signup from login
+    document.getElementById('signup-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('.tab[data-tab="signup"]').classList.add('active');
+
+      document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
+      document.getElementById('signup-form').classList.add('active');
+    });
+
+    // Switch to login from signup
+    document.getElementById('login-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('.tab[data-tab="login"]').classList.add('active');
+
+      document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
+      document.getElementById('login-form').classList.add('active');
+    });
+
+    // Success popup function
+    function showSuccess(message) {
+      let popup = document.createElement('div');
+      popup.innerText = message;
+      popup.style.position = 'fixed';
+      popup.style.top = '20px';
+      popup.style.right = '20px';
+      popup.style.background = 'green';
+      popup.style.color = 'white';
+      popup.style.padding = '10px 15px';
+      popup.style.borderRadius = '5px';
+      popup.style.zIndex = '9999';
+      document.body.appendChild(popup);
+
+      setTimeout(() => {
+        popup.remove();
+      }, 1500);
+    }
+
+    // Form submission handlers
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formType = e.target.closest('.form-container').id;
+
+        if (formType === 'login-form') {
+          showSuccess('✅ Login Successful!');
+          localStorage.setItem('isLoggedIn', 'true'); // save login statu
+          setTimeout(() => {
+            window.location.href = 'plot.html'; // Login ke baad redirect
+          }, 1500);
+        }
+        else if (formType === 'signup-form') {
+          showSuccess('🎉 Account Created Successfully!');
+          localStorage.setItem('isLoggedIn', 'true'); // directly log in
+          setTimeout(() => {
+            window.location.href = 'login.html';// Signup ke baad rediret
+          }, 1500);
+        }
+        else if (formType === 'forgot-password-form') {
+          showSuccess('📩 Password reset link sent!');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Estate | Premium Real Estate</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2a5b45;
+      --secondary: #d4a866;
+      --light: #f8f8f8;
+      --dark: #1a1a1a;
+      --gray: #666;
+      --light-gray: #eaeaea;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      background-color: #fafafa;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: white;
+      box-shadow: var(--shadow);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #d4af37;
+    }
+
+    .logo i {
+      color: #2a9d8f;
+      ;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    nav ul li a:hover {
+      color: #2a9d8f;
+    }
+
+    .cta-button {
+      background-color: #2a9d8f;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .cta-button:hover {
+      background-color: #d4af37;
+      transform: translateY(-3px);
+    }
+
+    .mobile-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      color: white;
+      margin-top: 70px;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-search {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .search-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: var(--dark);
+    }
+
+    .form-group select,
+    .form-group input {
+      padding: 12px;
+      border: 1px solid var(--light-gray);
+      border-radius: 5px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .search-btn {
+      background-color: #2a9d8f;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      align-self: flex-end;
+    }
+
+    .search-btn:hover {
+      background-color: #d4af37;
+    }
+
+    /* Properties Section */
+    .section-title {
+      text-align: center;
+      margin: 60px 0 40px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 1px solid var(--light-gray);
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background-color: #2a9d8f;
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .property-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .property-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .property-img {
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .property-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .property-card:hover .property-img img {
+      transform: scale(1.1);
+    }
+
+    .property-info {
+      padding: 20px;
+    }
+
+    .property-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .property-address {
+      color: var(--gray);
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+    }
+
+    .property-features {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--light-gray);
+      padding-top: 15px;
+      margin-top: 15px;
+    }
+
+    .feature {
+      text-align: center;
+    }
+
+    .feature i {
+      color: var(--secondary);
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .feature span {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    /* Services Section */
+    .services {
+      background-color: var(--light);
+      padding: 60px 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      text-align: center;
+      padding: 30px 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background-color: rgba(42, 91, 69, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .service-icon i {
+      font-size: 30px;
+      color: var(--primary);
+    }
+
+    .service-card h3 {
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 60px 0;
+      background: linear-gradient(to right, var(--primary), #3a7a5f);
+      color: white;
+    }
+
+    .testimonials .section-title h2 {
+      color: white;
+    }
+
+    .testimonials .section-title p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .testimonial-text:before {
+      content: "“";
+      font-size: 4rem;
+      position: absolute;
+      top: -20px;
+      left: -15px;
+      opacity: 0.2;
+      font-family: Georgia, serif;
+    }
+
+
+    .client-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .client-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 15px;
+    }
+
+    .client-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .client-details h4 {
+      margin-bottom: 5px;
+    }
+
+    .client-details p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-col h3:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--secondary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .footer-contact p {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-contact i {
+      margin-right: 10px;
+      color: var(--secondary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background-color: var(--secondary);
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-toggle {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: var(--shadow);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: var(--transition);
+      }
+
+      nav.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+
+      nav ul {
+        flex-direction: column;
+        padding: 20px 0;
+      }
+
+      nav ul li {
+        margin: 0;
+      }
+
+      nav ul li a {
+        display: block;
+        padding: 15px 30px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    .about-section {
+      padding: 60px 8%;
+      background: linear-gradient(to right, #faf8f5, #fdfcf9);
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-text h2 {
+      font-size: 34px;
+      margin-bottom: 16px;
+      color: #1b1b1b;
+      position: relative;
+    }
+
+    .about-text h2::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #d4af37, #f5e79e);
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      border-radius: 2px;
+    }
+
+    .about-text p {
+      margin-bottom: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .stats {
+      display: flex;
+      gap: 40px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+
+    .stats div {
+      text-align: center;
+    }
+
+    .stats strong {
+      display: block;
+      font-size: 26px;
+      color: #d4af37;
+    }
+
+    .stats span {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, #d4af37, #f5e79e);
+      color: #1b1b1b;
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    /* SLIDER */
+    .about-slider {
+      flex: 1;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .slides {
+      position: relative;
+      width: 100%;
+      height: 330px;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .slides img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: translateX(100%) scale(1.05);
+      transition: transform 1s ease, opacity 1s ease;
+    }
+
+    .slides img.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      z-index: 1;
+    }
+
+    .slides img.prev {
+      transform: translateX(-100%) scale(1.05);
+      opacity: 0;
+    }
+
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      border: none;
+      font-size: 26px;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+      z-index: 10;
+    }
+
+    .prev:hover,
+    .next:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .prev {
+      left: 15px;
+    }
+
+    .next {
+      right: 15px;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .dots span {
+      display: inline-block;
+      height: 12px;
+      width: 12px;
+      margin: 0 6px;
+      background: #bbb;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .dots span.active {
+      background: #d4af37;
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        text-align: center;
+      }
+
+      .hero-content {
+        padding: 0 20px;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <i class="fas fa-crown"></i>
+        LUXURY <span>ESTATES</span>
+      </div>
+      <div class="mobile-toggle" id="mobileToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#Properties">Properties</a></li>
+          <li><a href="#Services">Services</a></li>
+          <li><a href="#Agents">Agents</a></li>
+          <li><a href="#About">About</a></li>
+          <li><a href="#Contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="login.html" id="loginBtn" class="cta-button">Login</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Find Your Dream Home With Ease</h1>
+        <p>Discover the perfect property that matches your lifestyle and preferences from our premium collection.</p>
+
+        <div class="hero-search">
+          <div class="search-form">
+            <div class="form-group">
+              <label for="location">Location</label>
+              <select id="location">
+                <option>Any Location</option>
+                <option>New Delhi</option>
+                <option>Civil Lines</option>
+                <option>Hauz Khas</option>
+                <option>Karol Bagh</option>
+                <option>Preet Vihar</option>
+                <option>Punjabi Bagh</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="type">Property Type</label>
+              <select id="type">
+                <option>Any Type</option>
+                <option>Apartment</option>
+                <option>Villa</option>
+                <option>Townhouse</option>
+                <option>Penthouse</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="price">Price Range</label>
+              <select id="price">
+                <option>Any Price</option>
+                <option>₹50,00,000 - ₹1,00,00,000</option>
+                <option>₹1,00,00,000 - ₹2,00,00,000</option>
+                <option>₹2,00,00,000 - ₹4,00,00,000</option>
+                <option>₹5,00,00,000+</option>
+              </select>
+            </div>
+            <button class="search-btn">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Properties Section -->
+  <section class="properties" id="Properties">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Properties</h2>
+        <p>Explore our handpicked selection of premium properties that cater to all lifestyles.</p>
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All Properties</button>
+        <button class="filter-btn" data-filter="apartment">Apartments</button>
+        <button class="filter-btn" data-filter="villa">Villas</button>
+        <button class="filter-btn" data-filter="penthouse">Penthouses</button>
+      </div>
+
+      <!-- 1 -->
+      <div class="properties-grid">
+        <div class="property-card" data-type="apartment">
+          <div class="property-img">
+            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3"
+              alt="Modern Apartment">
+          </div>
+          <div class="property-info">
+            <div class="property-price">₹50,00,000 </div>
+            <h3>Modern Luxury Apartment</h3>
+            <div class="property-address">
+              <i class="fas fa-map-marker-alt"></i> 120 Park Ave, New Delhi
+            </div>
+            <div class="property-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>3 Beds</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>2 Baths</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-ruler-combined"></i>
+                <span>1,250 sq.ft.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="property-card" data-type="villa">
+          <div class="property-img">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3" alt="Luxury Villa">
+          </div>
+          <div class="property-info">
+            <div class="property-price">₹55,00,000</div>
+            <h3>Seaside Luxury Villa</h3>
+            <div class="property-address">
+              <i class="fas fa-map-marker-alt"></i> 80 Beach Blvd,Civil Lines
+            </div>
+            <div class="property-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>5 Beds</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>4 Baths</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-ruler-combined"></i>
+                <span>3,200 sq.ft.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="property-card" data-type="penthouse">
+          <div class="property-img">
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3" alt="Penthouse">
+          </div>
+          <div class="property-info">
+            <div class="property-price">₹65,00,000</div>
+            <h3>Skyline Penthouse</h3>
+            <div class="property-address">
+              <i class="fas fa-map-marker-alt"></i> 100 High St, Hauz Khas
+            </div>
+            <div class="property-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>4 Beds</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>3 Baths</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-ruler-combined"></i>
+                <span>2,800 sq.ft.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="property-card" data-type="apartment">
+          <div class="property-img">
+            <img src="https://bkvgroup.com/wp-content/uploads/2021/11/CCA_CBD_Detroit_E_H_01.jpg" alt="City Apartment">
+          </div>
+          <div class="property-info">
+            <div class="property-price">₹80,00,000</div>
+            <h3>Downtown City Apartment</h3>
+            <div class="property-address">
+              <i class="fas fa-map-marker-alt"></i> 160 Main St,Karol Bagh
+            </div>
+            <div class="property-features">
+              <div class="feature"><i class="fas fa-bed"></i><span>2 Beds</span></div>
+              <div class="feature"><i class="fas fa-bath"></i><span>1 Bath</span></div>
+              <div class="feature"><i class="fas fa-ruler-combined"></i><span>950 sq.ft.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="property-card" data-type="villa">
+          <div class="property-img">
+            <img src="https://imgcdn.stablediffusionweb.com/2024/9/12/ec0be6ca-5de7-44f3-9101-525c05903caa.jpg"
+              alt="Modern Villa">
+          </div>
+          <div class="property-info">
+            <div class="property-price">₹1,00,00,000</div>
+            <h3>Modern Hillside Villa</h3>
+            <div class="property-address">
+              <i class="fas fa-map-marker-alt"></i> 150 Mountain View,Preet Vihar
+            </div>
+            <div class="property-features">
+              <div class="feature"><i class="fas fa-bed"></i><span>6 Beds</span></div>
+              <div class="feature"><i class="fas fa-bath"></i><span>5 Baths</span></div>
+              <div class="feature"><i class="fas fa-ruler-combined"></i><span>4,500 sq.ft.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="property-card" data-type="penthouse">
+          <div class="property-img">
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/057/255/894/large_2x/cozy-lake-cabin-in-autumnal-forest-misty-rain-romantic-getaway-photo.jpeg"
+              alt="Cozy Cottage">
+          </div>
+          <div class="property-info">
+            <div class="property-price">₹1,75,00,000</div>
+            <h3>Cozy Lakeside Cottage</h3>
+            <div class="property-address">
+              <i class="fas fa-map-marker-alt"></i> 89 Lake Rd, Chandni Chowk
+            </div>
+            <div class="property-features">
+              <div class="feature"><i class="fas fa-bed"></i><span>2 Beds</span></div>
+              <div class="feature"><i class="fas fa-bath"></i><span>1 Bath</span></div>
+              <div class="feature"><i class="fas fa-ruler-combined"></i><span>800 sq.ft.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="property-card" data-type="apartment">
+          <div class="property-img">
+            <img
+              src="https://archello.s3.eu-central-1.amazonaws.com/images/2022/10/17/kca-international-the-penthouse--the-address-beach-resort-apartments-archello.1665992818.5879.jpg"
+              alt="Luxury Penthouse">
+          </div>
+          <div class="property-info">
+            <div class="property-price">₹2,50,00,000</div>
+            <h3>Ultra Modern Penthouse</h3>
+            <div class="property-address">
+              <i class="fas fa-map-marker-alt"></i> 200 Skyline Dr,Punjabi Bagh
+            </div>
+            <div class="property-features">
+              <div class="feature"><i class="fas fa-bed"></i><span>5 Beds</span></div>
+              <div class="feature"><i class="fas fa-bath"></i><span>4 Baths</span></div>
+              <div class="feature"><i class="fas fa-ruler-combined"></i><span>3,600 sq.ft.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="property-card" data-type="villa">
+          <div class="property-img">
+            <img
+              src="https://c8.alamy.com/comp/2BWFACR/a-large-suburban-house-at-sunset-with-beautiful-dramatic-clouds-and-snow-on-the-ground-2BWFACR.jpg"
+              alt="Bungalow">
+          </div>
+          <div class="property-info">
+            <div class="property-price">₹4,00,00,000</div>
+            <h3>Suburban Family Bungalow</h3>
+            <div class="property-address">
+              <i class="fas fa-map-marker-alt"></i> 230 Elm St,Greater Kailash
+            </div>
+            <div class="property-features">
+              <div class="feature"><i class="fas fa-bed"></i><span>4 Beds</span></div>
+              <div class="feature"><i class="fas fa-bath"></i><span>2 Baths</span></div>
+              <div class="feature"><i class="fas fa-ruler-combined"></i><span>1,800 sq.ft.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="property-card" data-type="penthouse">
+          <div class="property-img">
+            <img
+              src="https://i.ytimg.com/vi/LuQSn55E2AQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBDl6W5fK-LyFEL4Q8kxcIwwv3Uuw"
+              alt="Luxury Mansion">
+          </div>
+          <div class="property-info">
+            <div class="property-price">₹5,00,00,000</div>
+            <h3>Grand Luxury Mansion</h3>
+            <div class="property-address">
+              <i class="fas fa-map-marker-alt"></i> 250 Palm St,Saket
+            </div>
+            <div class="property-features">
+              <div class="feature"><i class="fas fa-bed"></i><span>8 Beds</span></div>
+              <div class="feature"><i class="fas fa-bath"></i><span>7 Baths</span></div>
+              <div class="feature"><i class="fas fa-ruler-combined"></i><span>9,000 sq.ft.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="Services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>We provide comprehensive real estate services to meet all your property needs.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <h3>Property Sales</h3>
+          <p>Expert assistance in buying and selling residential and commercial properties.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-key"></i>
+          </div>
+          <h3>Property Rental</h3>
+          <p>Find the perfect rental property for your needs with our extensive listings.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3>Property Management</h3>
+          <p>Professional management services for landlords and property investors.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Investment Consulting</h3>
+          <p>Strategic advice to help you make smart real estate investment decisions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="Agents">
+    <div class="container">
+      <div class="section-title">
+        <h2>What Our Clients Say</h2>
+        <p>Hear from our satisfied clients about their experience with LuxuryHomes.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "The team at LuxuryHomes made our home buying experience seamless. Their attention to detail and market
+            knowledge is unmatched."
+          </div>
+          <div class="client-info">
+            <div class="client-img">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3" alt="Client">
+            </div>
+            <div class="client-details">
+              <h4>Michael Johnson</h4>
+              <p>Home Buyer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "As a first-time investor, I was nervous about the process. LuxuryHomes guided me through every step and
+            helped me find a great property."
+          </div>
+          <div class="client-info">
+            <div class="client-img">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3" alt="Client">
+            </div>
+            <div class="client-details">
+              <h4>Sarah Williams</h4>
+              <p>Property Investor</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "The rental management service has been excellent. They handle everything professionally and I never have to
+            worry about my property."
+          </div>
+          <div class="client-info">
+            <div class="client-img">
+              <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3" alt="Client">
+            </div>
+            <div class="client-details">
+              <h4>Robert Chen</h4>
+              <p>Property Owner</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section id="About" class="about-section">
+    <div class="about-content">
+      <!-- LEFT TEXT -->
+      <div class="about-text">
+        <h2>About Luxury Estates</h2>
+        <p>
+          At Luxury Estates, we redefine premium living with exclusive villas, penthouses, and estates located in the
+          world’s most desirable destinations.
+        </p>
+        <p>
+          Our expert team offers personalized property consultation, investment advice, and seamless service from first
+          viewing to final key handover.
+        </p>
+        <div class="stats">
+          <div><strong>500+</strong><span>Properties Sold</span></div>
+          <div><strong>10+</strong><span>Years Experience</span></div>
+          <div><strong>1000+</strong><span>Happy Clients</span></div>
+        </div>
+        <a href="#more" class="btn">Learn More</a>
+      </div>
+
+      <!-- RIGHT IMAGE SLIDER -->
+      <div class="about-slider">
+        <div class="slides">
+          <img src="https://d15zjc2r4e8kr7.cloudfront.net/9129/blog/LuxuryLiving.jpg" alt="Luxury Home">
+          <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+            alt="Commercial Property">
+          <img
+            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+            alt="Agricultural Land">
+          <img
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+            alt="Modern Development">
+          <img
+            src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+            alt="Countryside Property">
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="Contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Luxury Estates</h3>
+          <p>Providing premium real estate services with integrity, expertise and personalized attention.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#Properties">Properties</a></li>
+            <li><a href="#Services">Services</a></li>
+            <li><a href="#Agents">Agents</a></li>
+            <li><a href="#About">About </a></li>
+            <li><a href="#Contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Property Types</h3>
+          <ul class="footer-links">
+            <li><a href="#">Apartments</a></li>
+            <li><a href="#">Villas</a></li>
+            <li><a href="#">Townhouses</a></li>
+            <li><a href="#">Penthouses</a></li>
+            <li><a href="#">Commercial</a></li>
+            <li><a href="#">Land Plots</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <div class="footer-contact">
+            <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Avenue, New Delhi, ND 110044</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@luxuryEstates.com</p>
+            <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; 2025 Luxury Estates Real Estate. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    mobileToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+
+    // Property Filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const propertyCards = document.querySelectorAll('.property-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+
+        // Add active class to clicked button
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        propertyCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-type') === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        header.style.backgroundColor = 'rgba(255,255,255,0.95)';
+      } else {
+        header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        header.style.backgroundColor = 'white';
+      }
+    });
+
+    //logout effects
+    const loginBtn = document.getElementById('loginBtn');
+
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      // User is logged in → show Logout
+      loginBtn.textContent = 'Logout';
+      loginBtn.href = '#';
+      loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('isLoggedIn'); // Clear login state
+        window.location.href = 'login.html'; // Redirect to login page
+      });
+    }
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slides img");
+    const totalSlides = slides.length;
+    const dotsContainer = document.querySelector(".dots");
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement("span");
+      dot.addEventListener("click", () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll(".dots span");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active", "prev");
+        if (i === index) {
+          slide.classList.add("active");
+        } else if (i === currentSlide) {
+          slide.classList.add("prev");
+        }
+      });
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+    }
+
+    function nextSlide() {
+      const oldSlide = currentSlide;
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      const oldSlide = currentSlide;
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      showSlide(currentSlide);
+    }
+
+    document.querySelector(".next").addEventListener("click", nextSlide);
+    document.querySelector(".prev").addEventListener("click", prevSlide);
+
+    setInterval(nextSlide, 5000);
+    showSlide(currentSlide);
+  </script>
+</body>
+
+</html>
